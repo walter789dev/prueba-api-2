@@ -13,7 +13,7 @@ app.get('/', (request, response) => response.send(notes))
 app.get('/:id', (request, response) => {
    const id = request.params.id
    const note = notes.find(note => note.id === Number(id))
-   note ? response.json(note) : response.status(404).end()
+   note ? response.send(note) : response.status(404).end()
  })
 
 app.post('/', (request, response) => {
