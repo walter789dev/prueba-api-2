@@ -9,7 +9,7 @@ const generateId = () =>{
 
 app.use(express.json())
 
-app.get('/api/notes', (request, response) => response.send(notes))
+app.get('/', (request, response) => response.send(notes))
 app.get('/api/notes/:id', (request, response) => {
    const id = request.params.id
    const note = notes.find(note => note.id === Number(id))
