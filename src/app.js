@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 const {notes} = require('../notes.json')
 const app = express()
 
@@ -38,4 +38,4 @@ app.delete('/api/notes/:id', (request, response) => {
    response.status(204).end()
  })
 
-module.exports = app
+ export default app
