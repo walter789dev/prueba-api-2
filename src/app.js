@@ -10,13 +10,13 @@ const generateId = () =>{
 app.use(express.json())
 
 app.get('/', (request, response) => response.send(notes))
-app.get('/api/notes/:id', (request, response) => {
+app.get('/:id', (request, response) => {
    const id = request.params.id
    const note = notes.find(note => note.id === Number(id))
    note ? response.json(note) : response.status(404).end()
  })
 
-app.post('/api/notes', (request, response) => {
+app.post('/', (request, response) => {
    const body = request.body
 
    if (!body.content) return response.status(400).json({error: "content missing"})
@@ -32,7 +32,7 @@ app.post('/api/notes', (request, response) => {
    response.send(note)
  })
 
-app.delete('/api/notes/:id', (request, response) => {
+app.delete('/:id', (request, response) => {
    const id = request.params.id
    notes = notes.filter(note => note.id !== Number(id))
    response.status(204).end()
